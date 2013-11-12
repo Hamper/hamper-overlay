@@ -124,6 +124,7 @@ src_configure() {
 		$(cmake-utils_use webkit ADIUMWEBVIEW)
 		-DHAIKUNOTIFICATIONS=OFF
 		-DUNITYLAUNCHER=OFF
+		-DQUTIM_INSTALL_ICONS=ON
 		#-DUPDATER=OFF
 		-DSCREENSHOTER=OFF
 		# protocols
