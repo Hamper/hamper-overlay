@@ -32,6 +32,7 @@ CDEPEND="
 	>=dev-qt/qtcore-${QT_PV}[ssl?]
 	>=dev-qt/qtgui-${QT_PV}
 	>=dev-qt/qtscript-${QT_PV}
+	>=dev-qt/qtdeclarative-${QT_PV}
 	aspell? ( app-text/aspell )
 	awn? ( >=dev-qt/qtdbus-${QT_PV} )
 	ayatana? ( >=dev-libs/libindicate-qt-0.2.2 )
