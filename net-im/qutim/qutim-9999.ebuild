@@ -76,6 +76,8 @@ RDEPEND="${CDEPEND}"
 
 DOCS=( AUTHORS ChangeLog )
 
+use debug && RESTRICT=strip
+
 src_unpack() {
         git-2_src_unpack
 	cd $EGIT_SOURCEDIR
