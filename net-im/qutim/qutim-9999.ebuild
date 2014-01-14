@@ -99,6 +99,7 @@ src_prepare() {
 }
 
 src_configure() {
+    use debug && CMAKE_BUILD_TYPE=Debug
 	local mycmakeargs=(
 		-DSYSTEM_JREEN=ON
 		$(cmake-utils_use_with doc DOXYGEN)
@@ -111,7 +112,6 @@ src_configure() {
 		$(cmake-utils_use dbus DBUSAPI)
 		$(cmake-utils_use dbus DBUSNOTIFICATIONS)
 		$(cmake-utils_use dbus NOWPLAYING)
-		$(cmake-utils_use debug CMAKE_BUILD_TYPE=Debug)
 		$(cmake-utils_use histman)
 		$(cmake-utils_use hunspell HUNSPELLER)
 		$(cmake-utils_use kde KDEINTEGRATION)
