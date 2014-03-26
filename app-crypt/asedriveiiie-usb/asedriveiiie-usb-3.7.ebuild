@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="ASEDriveIIIe USB Card Reader"
 HOMEPAGE="http://www.athena-scs.com"
 SRC_URI="http://www.athena-scs.com/docs/reader-drivers/asedriveiiie-usb-3-7-tar.bz2 -> ${P}.tbz2"
@@ -16,10 +18,16 @@ RDEPEND=">=sys-apps/pcsc-lite-1.3.0
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+src_prepare() {
+	epatch "${FILESDIR}/fix-make-${PV}.patch"
+}
+
 src_install() {
 	emake DESTDIR="${D}" install || die "emake install failed"
-
+	
 	dodoc ChangeLog README
+	insinto /etc/udev/rules.d/
+	newins 50-pcscd-asedriveiiie.rules 50-pcscd-asedriveiiie.rules || die
 }
 
 pkg_postinst() {
