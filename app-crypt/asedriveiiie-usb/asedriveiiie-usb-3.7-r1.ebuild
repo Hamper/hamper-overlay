@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="ASEDriveIIIe USB Card Reader"
 HOMEPAGE="http://www.athena-scs.com"
-SRC_URI="http://www.athena-scs.com/docs/reader-drivers/asedriveiiie-usb-3-7-tar.bz2 -> ${P}.tbz2"
+SRC_URI="http://www.athena-scs.com/docs/reader-drivers/${P/./-}-tar.bz2 -> ${P}.tbz2"
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
