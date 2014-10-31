@@ -7,8 +7,8 @@ EAPI=5
 DESCRIPTION="Unofficial telegram protocol client"
 HOMEPAGE="https://telegram.org/"
 SRC_URI="
-	amd64?	( https://storage.googleapis.com/tlinux/tsetup.${PV}.tar.xz -> ${P}.tar.xz )
-	x86?	( https://storage.googleapis.com/tlinux32/tsetup32.${PV}.tar.xz -> ${PN}32-${PV}.tar.xz )"
+	amd64?	( https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz -> ${P}.tar.xz )
+	x86?	( https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz -> ${PN}32-${PV}.tar.xz )"
 
 RESTRICT="mirror"
 LICENSE="GPL-3"
