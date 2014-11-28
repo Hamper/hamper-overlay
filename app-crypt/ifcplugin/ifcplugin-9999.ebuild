@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="**"
 IUSE=""
 
-DEPEND=""
+DEPEND="sys-apps/pcsc-lite"
 RDEPEND="${DEPEND}"
 S="${WORKDIR}"
 
@@ -31,4 +31,11 @@ src_unpack() {
 
 src_install() {
 	cp -pPR * "${D}"/ || die "installing data failed"
+	#Create logs dir
+	mkdir -p "${D}"/var/log/ifc
+	mkdir -p "${D}"/var/log/ifc/engine_logs
+	chmod 777 "${D}"/var/log/ifc
+	chmod 777 "${D}"/var/log/ifc/engine_logs
+	cd "${D}"/etc/update_ccid_boundle
+	bash ./update_ccid_boundle.sh
 }
