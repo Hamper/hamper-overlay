@@ -23,8 +23,8 @@ RDEPEND="dev-libs/openssl
 	!net-libs/nodejs
 	dev-libs/icu"
 DEPEND="${PYTHON_DEPS}
-	${RDEPEND}
-	>=net-libs/http-parser-2.3"
+	${RDEPEND}"
+#	>=net-libs/http-parser-2.3"
 #	=dev-libs/libuv-0.11.25-r1"
 
 S=${WORKDIR}/iojs-v${PV}
@@ -52,8 +52,8 @@ src_configure() {
 	"${PYTHON}" configure --prefix="${EPREFIX}"/usr \
 		--shared-openssl \
 		--shared-zlib \
-		--shared-http-parser \
 		--without-dtrace ${myconf} || die
+#		--shared-http-parser \
 #		--shared-libuv \
 }
 
