@@ -56,8 +56,7 @@ src_prepare() {
         use linguas_${lang} || rm -f translations/modules/*/${lang}.{po,ts}
     done
 	# fix clang compilation
-	sed -i "s/stdlib=libc++/stdlib=libstdc++/g" protocols/vkontakte/vreen/modules/vreen/core/core.qbs
-	sed -i "s/stdlib=libc++/stdlib=libstdc++/g" core/libqutim.qbs
+	epatch "${FILESDIR}/${PN}-clang.patch"
 }
 
 src_configure() {
