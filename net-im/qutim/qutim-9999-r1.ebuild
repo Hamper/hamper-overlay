@@ -56,7 +56,7 @@ src_prepare() {
 		use linguas_${lang} || rm -f translations/modules/*/${lang}.{po,ts}
 	done
 	# fix clang compilation
-	epatch "${FILESDIR}/${PN}-clang.patch"
+	use clang && epatch "${FILESDIR}/${PN}-clang.patch"
 }
 
 src_configure() {
