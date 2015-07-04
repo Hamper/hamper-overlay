@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="**"
 IUSE="clang debug sdl +vkontakte -indicator"
 for X in ${LANGS}; do
-    IUSE="${IUSE} linguas_${X}"
+	IUSE="${IUSE} linguas_${X}"
 done
 QSETTINGS=""
 use vkontakte || QSETTINGS="${QSETTINGS} vkontakteplugin.condition:false"
@@ -50,21 +50,21 @@ RDEPEND="${CDEPEND}"
 use debug && RESTRICT=strip
 
 src_prepare() {
-    # remove unwanted translations
-    local lang
-    for lang in ${LANGS}; do
-        use linguas_${lang} || rm -f translations/modules/*/${lang}.{po,ts}
-    done
+	# remove unwanted translations
+	local lang
+	for lang in ${LANGS}; do
+		use linguas_${lang} || rm -f translations/modules/*/${lang}.{po,ts}
+	done
 	# fix clang compilation
 	epatch "${FILESDIR}/${PN}-clang.patch"
 }
 
 src_configure() {
-    use clang && TC=clang || TC=gcc
-    qbs-setup-toolchains --settings-dir $T /usr/bin/$TC tc
-    qbs-setup-qt --settings-dir $T /usr/lib/qt5/bin/qmake qt
-    qbs-config --settings-dir $T profiles.qt.baseProfile tc
-	qbs config --settings-dir $T defaultProfile qt
+	use clang && TC=clang || TC=gcc
+	qbs-setup-toolchains --settings-dir $T /usr/bin/$TC tc
+	qbs-setup-qt --settings-dir $T /usr/lib/qt5/bin/qmake qt
+	qbs-config --settings-dir $T profiles.qt.baseProfile tc
+	qbs-config --settings-dir $T defaultProfile qt
 }
 
 src_compile() {
