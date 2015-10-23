@@ -24,9 +24,6 @@ QA_PREBUILT="opt/bin/${PN}"
 src_unpack() {
         mkdir -p ${WORKDIR}/${P}
         cd ${WORKDIR}/${P}
-src_unpack() {
-        mkdir -p ${WORKDIR}/${P}
-        cd ${WORKDIR}/${P}
     unpack_deb ${A}
 }
 
