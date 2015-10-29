@@ -14,7 +14,7 @@ SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="**"
 IUSE="luajit +static-libs"
 
 S="${WORKDIR}/aerospike-client-c-${PV}"
