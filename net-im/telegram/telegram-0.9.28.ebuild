@@ -10,7 +10,7 @@ SRC_URI="
 	amd64?	( https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz -> ${P}.tar.xz )
 	x86?	( https://updates.tdesktop.com/tlinux32/tsetup32.${PV}.tar.xz -> ${PN}32-${PV}.tar.xz )"
 
-RESTRICT="mirror"
+RESTRICT="mirror strip"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
