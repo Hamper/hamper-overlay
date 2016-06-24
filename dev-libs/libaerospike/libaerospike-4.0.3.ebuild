@@ -20,7 +20,6 @@ HOMEPAGE="https://github.com/aerospike/aerospike-client-c"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="**"
 IUSE="luajit +static-libs"
 
 # tests fails to build ?
