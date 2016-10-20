@@ -17,10 +17,6 @@ IUSE="clang debug sdl +vkontakte -indicator"
 for X in ${LANGS}; do
 	IUSE="${IUSE} linguas_${X}"
 done
-QSETTINGS=""
-use vkontakte || QSETTINGS="${QSETTINGS} vkontakteplugin.condition:false"
-use indicator || QSETTINGS="${QSETTINGS} indicator.condition:false"
-use sdl || QSETTINGS="${QSETTINGS} sdlsound.condition:false"
 
 CDEPEND="
 	>=dev-qt/qtcore-5.5
@@ -47,7 +43,7 @@ DEPEND="
 "
 RDEPEND="${CDEPEND}"
 
-use debug && RESTRICT=strip
+RESTRICT="debug? ( strip )"
 
 src_prepare() {
 	# remove unwanted translations
@@ -68,9 +64,17 @@ src_configure() {
 }
 
 src_compile() {
+	QSETTINGS=""
+	use vkontakte || QSETTINGS="${QSETTINGS} vkontakteplugin.condition:false"
+	use indicator || QSETTINGS="${QSETTINGS} indicator.condition:false"
+	use sdl || QSETTINGS="${QSETTINGS} sdlsound.condition:false"
 	qbs build --settings-dir $T $QSETTINGS || die
 }
 
 src_install() {
+	QSETTINGS=""
+	use vkontakte || QSETTINGS="${QSETTINGS} vkontakteplugin.condition:false"
+	use indicator || QSETTINGS="${QSETTINGS} indicator.condition:false"
+	use sdl || QSETTINGS="${QSETTINGS} sdlsound.condition:false"
 	qbs install --settings-dir $T --install-root $D $QSETTINGS || die
 }

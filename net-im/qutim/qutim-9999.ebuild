@@ -76,10 +76,10 @@ RDEPEND="${CDEPEND}"
 
 DOCS=( AUTHORS ChangeLog )
 
-use debug && RESTRICT=strip
+RESTRICT="debug? ( strip )"
 
 src_unpack() {
-        git-2_src_unpack
+    git-2_src_unpack
 	cd $EGIT_SOURCEDIR
 	git submodule update --init --recursive
 }
