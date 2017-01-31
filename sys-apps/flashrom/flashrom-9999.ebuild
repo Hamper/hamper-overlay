@@ -66,11 +66,11 @@ flashrom_enable() {
 	for u ; do _flashrom_enable "${u}" ; done
 }
 
-#src_prepare() {
-	#sed -i \
-	#	-e 's:pkg-config:$(PKG_CONFIG):' \
-	#	Makefile || die
-#}
+src_prepare() {
+	sed -i \
+		-e 's:pkg-config:$(PKG_CONFIG):' \
+		Makefile || die
+}
 
 src_compile() {
 	git config flashrom.offline-builds false
