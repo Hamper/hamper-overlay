@@ -24,10 +24,3 @@ src_prepare() {
 	eapply_user
 }
 
-src_configure() {
-	./configure --prefix=/usr || die "configure failed"
-}
-
-src_compile() {
-	emake INCLUDES="${INCLUDES} -I../rapidjson/include"
-}
