@@ -8,7 +8,7 @@ inherit eutils gnome2-utils xdg
 DESCRIPTION="Official desktop client for Telegram (binary package)"
 HOMEPAGE="https://desktop.telegram.org"
 SRC_URI="
-	https://github.com/telegramdesktop/tdesktop/archive/v1.1.22.tar.gz -> tdesktop-1.1.22.tar.gz
+	https://github.com/telegramdesktop/tdesktop/archive/v${PV}.tar.gz -> tdesktop-${PV}.tar.gz
 	amd64? ( https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz )
 	x86? ( https://updates.tdesktop.com/tlinux32/tsetup32.${PV}.tar.xz )
 "
@@ -36,11 +36,11 @@ src_install() {
 	local icon_size
 	for icon_size in 16 32 48 64 128 256 512; do
 		newicon -s "${icon_size}" \
-			"${WORKDIR}/tdesktop-1.1.22/Telegram/Resources/art/icon${icon_size}.png" \
+			"${WORKDIR}/tdesktop-${PV}/Telegram/Resources/art/icon${icon_size}.png" \
 			telegram-desktop.png
 	done
 
-	newmenu "${WORKDIR}/tdesktop-1.1.22"/lib/xdg/telegramdesktop.desktop telegram-desktop.desktop
+	domenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/telegramdesktop.desktop
 }
 
 pkg_preinst() {

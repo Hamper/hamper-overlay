@@ -1,0 +1,59 @@
+# Copyright 1999-2017 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=6
+
+inherit eutils gnome2-utils xdg
+
+DESCRIPTION="Official desktop client for Telegram (binary package)"
+HOMEPAGE="https://desktop.telegram.org"
+MY_PV="${PV/_alpha/}"
+SRC_URI="
+	https://github.com/telegramdesktop/tdesktop/archive/v${MY_PV}.tar.gz -> tdesktop-${MY_PV}.tar.gz
+	amd64? ( https://updates.tdesktop.com/tlinux/tsetup.${MY_PV}.alpha.tar.xz )
+	x86? ( https://updates.tdesktop.com/tlinux32/tsetup32.${MY_PV}.alpha.tar.xz )
+"
+
+LICENSE="telegram"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
+
+QA_PREBUILT="usr/bin/telegram-desktop"
+
+RDEPEND="
+	dev-libs/glib:2
+	dev-libs/gobject-introspection
+	>=sys-apps/dbus-1.4.20
+	x11-libs/libX11
+	>=x11-libs/libxcb-1.10[xkb]
+"
+DEPEND=""
+
+S="${WORKDIR}/Telegram"
+
+src_install() {
+	newbin "${S}/Telegram" telegram-desktop
+
+	local icon_size
+	for icon_size in 16 32 48 64 128 256 512; do
+		newicon -s "${icon_size}" \
+			"${WORKDIR}/tdesktop-${MY_PV}/Telegram/Resources/art/icon${icon_size}.png" \
+			telegram-desktop.png
+	done
+
+	domenu "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/telegramdesktop.desktop
+}
+
+pkg_preinst() {
+	xdg_pkg_preinst
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+	gnome2_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_pkg_postrm
+	gnome2_icon_cache_update
+}
