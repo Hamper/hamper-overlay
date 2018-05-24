@@ -10,8 +10,10 @@ MY_PN=zoom
 DESCRIPTION="Video conferencing and web conferencing service"
 BASE_SERVER_URI="https://zoom.us"
 HOMEPAGE="${BASE_SERVER_URI}"
-#SRC_URI="${BASE_SERVER_URI}/client/${PV}/${MY_PN}_amd64.deb"
-SRC_URI="${BASE_SERVER_URI}/client/${PV}/${MY_PN}_x86_64.pkg.tar.xz"
+SRC_URI="
+	amd64? ( ${BASE_SERVER_URI}/client/${PV}/${MY_PN}_x86_64.tar.xz -> ${P}_x86_64.tar.xz )
+	x86? ( ${BASE_SERVER_URI}/client/${PV}/${MY_PN}_i686.tar.xz -> ${P}_i686.tar.xz )
+"
 
 LICENSE="ZOOM"
 SLOT="0"
