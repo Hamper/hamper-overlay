@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="ZOOM"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~x86 ~amd64"
 
 RESTRICT="mirror"
 
