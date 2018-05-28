@@ -10,8 +10,8 @@ HOMEPAGE="https://desktop.telegram.org"
 MY_PV="${PV/_alpha/}"
 SRC_URI="
 	https://github.com/telegramdesktop/tdesktop/archive/v${MY_PV}.tar.gz -> tdesktop-${MY_PV}.tar.gz
-	amd64? ( https://updates.tdesktop.com/tlinux/tsetup.${MY_PV}.alpha.tar.xz )
-	x86? ( https://updates.tdesktop.com/tlinux32/tsetup32.${MY_PV}.alpha.tar.xz )
+	amd64? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${MY_PV}/tsetup.${MY_PV}.alpha.tar.xz )
+	x86? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${MY_PV}/tsetup32.${MY_PV}.alpha.tar.xz )
 "
 
 LICENSE="telegram"
