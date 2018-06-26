@@ -27,7 +27,7 @@ RDEPEND="
 	>=x11-libs/libxcb-1.10[xkb]
 "
 DEPEND=""
-RESTRICT="mirror"
+#RESTRICT="mirror"
 
 S="${WORKDIR}/Telegram"
 
