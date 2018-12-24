@@ -10,7 +10,7 @@ if [[ ${PV} != *9999* ]]; then
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/syncthing/syncthing-gtk.git"
-        KEYWORDS="**"
+    KEYWORDS=""
 fi
 
 LICENSE="GPL-2"
