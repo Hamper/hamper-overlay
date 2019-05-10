@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils xdg
+inherit desktop xdg
 
 DESCRIPTION="Official desktop client for Telegram (binary package)"
 HOMEPAGE="https://desktop.telegram.org"
@@ -15,9 +15,9 @@ SRC_URI="
 
 LICENSE="telegram"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 
-QA_PREBUILT="usr/bin/telegram-desktop"
+QA_PREBUILT="usr/lib/${PN}/Telegram"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -25,20 +25,21 @@ RDEPEND="
 	>=sys-apps/dbus-1.4.20
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10[xkb]
+	>=media-libs/fontconfig-2.13
 "
-DEPEND=""
-#RESTRICT="mirror"
 
 S="${WORKDIR}/Telegram"
 
 src_install() {
-	newbin "${S}/Telegram" telegram-desktop
+	exeinto /usr/lib/${PN}
+	doexe "Telegram"
+	newbin "${FILESDIR}"/${PN} "telegram-desktop"
 
 	local icon_size
 	for icon_size in 16 32 48 64 128 256 512; do
 		newicon -s "${icon_size}" \
 			"${WORKDIR}/tdesktop-${PV}/Telegram/Resources/art/icon${icon_size}.png" \
-			telegram-desktop.png
+			telegram.png
 	done
 
 	domenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/telegramdesktop.desktop
@@ -50,10 +51,13 @@ pkg_preinst() {
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
+	einfo
+	einfo "Previous versions of ${PN} have created "
+	einfo "\"~/.local/share/applications/telegram.desktop\". These files"
+	einfo "conflict with the one shipped by portage and should be removed"
+	einfo "from all homedirs. (https://bugs.gentoo.org/618662)"
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }
