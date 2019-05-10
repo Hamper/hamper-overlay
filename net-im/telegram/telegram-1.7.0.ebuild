@@ -17,7 +17,7 @@ LICENSE="telegram"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
-QA_PREBUILT="usr/lib/${PN}/Telegram"
+QA_PREBUILT="usr/lib/telegram-desktop-bin/Telegram"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -31,9 +31,9 @@ RDEPEND="
 S="${WORKDIR}/Telegram"
 
 src_install() {
-	exeinto /usr/lib/${PN}
+	exeinto /usr/lib/telegram-desktop-bin
 	doexe "Telegram"
-	newbin "${FILESDIR}"/${PN} "telegram-desktop"
+	newbin "${FILESDIR}/telegram-desktop-bin" "telegram-desktop"
 
 	local icon_size
 	for icon_size in 16 32 48 64 128 256 512; do
