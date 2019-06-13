@@ -36,7 +36,8 @@ src_prepare() {
 
 	# main, applies to all modules
 	sed -e "s/CC = cc/CC = $(tc-getCC)/g" \
-		-e "s/LD = cc/CC = $(tc-getCC)/g" \
+		-e "s/LD = cc/LD = $(tc-getCC)/g" \
+		-e "s/export LDFLAGS =/export LDFLAGS = -Wl,-soname,libaerospike.so/g" \
 		-i project/settings.mk || die
 
 	# include dir
@@ -48,7 +49,7 @@ src_compile() {
 	use luajit && export USE_LUAJIT = 1
 	# forced MAKEOPTS, see:
 	# https://github.com/aerospike/aerospike-client-c/issues/22
-	CC=$(tc-getCC) LD=$(tc-getCC) DYNAMIC_FLAG="-W1,-soname,libaerospike.so" MAKEOPTS="-j1" PREFIX=/usr emake all
+	CC=$(tc-getCC) LD=$(tc-getCC) LDFLAGS="-Wl,-soname,libaerospike.so" MAKEOPTS="-j1" PREFIX=/usr emake all
 }
 
 src_install() {
