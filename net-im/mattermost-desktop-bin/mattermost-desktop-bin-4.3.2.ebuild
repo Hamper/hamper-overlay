@@ -11,7 +11,7 @@ DESCRIPTION="Mattermost Desktop application"
 HOMEPAGE="https://about.mattermost.com/"
 
 SRC_URI="
-	https://github.com/mattermost/desktop/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mattermost/desktop/archive/${PV}.tar.gz -> ${P}.tar.gz
 	amd64? ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-x64.tar.gz )
 	x86?   ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-ia32.tar.gz )
 "
