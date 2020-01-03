@@ -13,7 +13,7 @@ SRC_URI="
 	x86? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/tsetup32.${PV}.tar.xz )
 "
 
-LICENSE="telegram"
+LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 
@@ -22,10 +22,10 @@ QA_PREBUILT="usr/lib/telegram-desktop-bin/Telegram"
 RDEPEND="
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
+	>=media-libs/fontconfig-2.13
 	>=sys-apps/dbus-1.4.20
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10[xkb]
-	>=media-libs/fontconfig-2.13
 "
 
 S="${WORKDIR}/Telegram"
@@ -45,19 +45,3 @@ src_install() {
 	domenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/telegramdesktop.desktop
 }
 
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-	einfo
-	einfo "Previous versions of ${PN} have created "
-	einfo "\"~/.local/share/applications/telegram.desktop\". These files"
-	einfo "conflict with the one shipped by portage and should be removed"
-	einfo "from all homedirs. (https://bugs.gentoo.org/618662)"
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
-}
