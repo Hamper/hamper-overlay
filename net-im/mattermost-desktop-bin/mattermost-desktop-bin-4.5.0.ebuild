@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -67,6 +67,7 @@ DOCS=(
 	LICENSE.electron.txt
 	README.md
 )
+
 src_unpack() {
 	unpack ${A}
 	use amd64 && mv "${WORKDIR}/mattermost-desktop-${PV}-linux-x64" "${S}"
@@ -85,7 +86,7 @@ src_install() {
 	exeinto "/opt/${MY_PN}"
 	doexe *.so "${MY_PN}"
 
-	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "../..//opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 
 	newicon "${S}/icon.svg" "${MY_PN}.svg"
 	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
