@@ -7,7 +7,7 @@ inherit toolchain-funcs git-r3
 DESCRIPTION="LV2 port of Autotalent pitch correction plugin"
 HOMEPAGE="https://github.com/jeremysalwen/TalentedHack"
 EGIT_REPO_URI="https://github.com/jeremysalwen/TalentedHack.git"
-EGIT_COMMIT="c3c9dac85ed2e7b6c924796d17170ee8c2d0c83e"
+EGIT_COMMIT="v${PV}"
 
 LICENSE=""
 SLOT="0"
