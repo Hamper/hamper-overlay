@@ -72,6 +72,8 @@ src_unpack() {
 	unpack ${A}
 	use amd64 && mv "${WORKDIR}/mattermost-desktop-${PV}-linux-x64" "${S}"
 	use x86 && mv "${WORKDIR}/mattermost-desktop-${PV}-linux-ia32" "${S}"
+    mv "${WORKDIR}/desktop-${PV}/src/assets/linux/icon.svg" "${S}"
+    mv "${WORKDIR}/desktop-${PV}/src/assets/linux/README.md" "${S}"
 }
 
 src_install() {
