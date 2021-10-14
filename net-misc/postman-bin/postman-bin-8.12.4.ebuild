@@ -28,7 +28,7 @@ src_install() {
 
   exeinto /opt/${MY_PN}
   doexe Postman
-  doexe _Postman
+  doexe postman
 
   dosym /opt/${MY_PN}/Postman /usr/bin/${MY_PN}
 
