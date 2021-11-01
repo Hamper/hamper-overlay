@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit desktop optfeature xdg
 
@@ -17,20 +17,13 @@ LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-QA_PREBUILT="usr/lib/telegram-desktop-bin/Telegram"
+QA_PREBUILT="usr/bin/telegram-desktop"
 
 RDEPEND="
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
 	>=media-libs/fontconfig-2.13
 	media-libs/freetype:2
-	media-libs/libglvnd[X]
-	>=sys-apps/dbus-1.4.2[X]
-	sys-libs/zlib
-	x11-libs/libSM
-	x11-libs/libdrm
-	x11-libs/libICE
-	x11-libs/libSM
+	virtual/opengl
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10[xkb]
 "
@@ -40,9 +33,10 @@ RESTRICT="mirror"
 S="${WORKDIR}/Telegram"
 
 src_install() {
-	exeinto /usr/lib/telegram-desktop-bin
-	doexe "Telegram"
-	newbin "${FILESDIR}/telegram-desktop-bin" "telegram-desktop"
+	newbin Telegram telegram-desktop
+
+	insinto /etc/tdesktop
+	newins - externalupdater <<<"${EPREFIX}/usr/bin/telegram-desktop"
 
 	local icon_size
 	for icon_size in 16 32 48 64 128 256 512; do
