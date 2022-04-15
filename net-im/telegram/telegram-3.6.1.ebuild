@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,12 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 
 QA_PREBUILT="usr/bin/telegram-desktop"
+# current desktop-file-utils-0.26 does not understand Version=1.5
+# https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/59
+QA_DESKTOP_FILE="usr/share/applications/telegramdesktop.desktop"
 
 RDEPEND="
+	sys-libs/glibc
 	dev-libs/glib:2
 	>=media-libs/fontconfig-2.13
 	media-libs/freetype:2
