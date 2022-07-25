@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=5
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/aerospike/aerospike-client-c.git"
 
@@ -43,6 +43,7 @@ src_prepare() {
 	# include dir
 	#sed -e 's@/usr/local@/usr@g' -i Makefile -i modules/lua/Makefile -i modules/mod-lua/Makefile -i modules/luajit/src/Makefile -i modules/luajit/Makefile || die
 	find -type f | xargs -I{} sed -e 's@/usr/local@/usr@g' -i {}
+	eapply_user
 }
 
 src_compile() {
@@ -53,7 +54,7 @@ src_compile() {
 }
 
 src_install() {
-	dolib target/Linux-x86_64/lib/libaerospike.so
+	dolib.so target/Linux-x86_64/lib/libaerospike.so
 	use static-libs && dolib.a target/Linux-x86_64/lib/libaerospike.a
 
 	insinto /usr/include/
