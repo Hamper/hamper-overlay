@@ -11,13 +11,14 @@ DESCRIPTION="Mattermost Desktop application"
 HOMEPAGE="https://about.mattermost.com/"
 
 SRC_URI="
-	amd64? ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-x64.tar.gz )
-	x86?   ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-ia32.tar.gz )
+	amd64? ( https://github.com/mattermost/desktop/releases/download/v${PV}/mattermost-desktop-${PV}-linux-x64.tar.gz )
 "
+#	amd64? ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-x64.tar.gz )
+#	x86?   ( https://releases.mattermost.com/desktop/${PV}/mattermost-desktop-${PV}-linux-ia32.tar.gz )
 
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
 RDEPEND="
 	app-accessibility/at-spi2-atk:2
