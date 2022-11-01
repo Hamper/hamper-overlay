@@ -71,7 +71,7 @@ src_install() {
 	insinto "/opt/${MY_PN}/locales"
 	doins locales/*.pak
 
-	insinto "/opt/${MY_PN}/resourses"
+	insinto "/opt/${MY_PN}/resources"
 	doins -r resources/*
 
 	insinto "/opt/${MY_PN}"
