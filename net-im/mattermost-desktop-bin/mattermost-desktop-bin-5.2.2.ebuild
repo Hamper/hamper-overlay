@@ -11,12 +11,15 @@ inherit desktop xdg
 DESCRIPTION="Mattermost Desktop application"
 HOMEPAGE="https://mattermost.com/"
 
-SRC_URI="https://releases.mattermost.com/desktop/${MY_PV}/mattermost-desktop-${MY_PV}-linux-x64.tar.gz"
+SRC_URI="
+	amd64? ( https://releases.mattermost.com/desktop/${MY_PV}/mattermost-desktop-${MY_PV}-linux-x64.tar.gz )
+	arm64? ( https://releases.mattermost.com/desktop/${MY_PV}/mattermost-desktop-${MY_PV}-linux-arm64.tar.gz )
+"
 
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
 # Starting with 5.2.0 upstream dropped x86 for their binary release #879519
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2[X]
@@ -59,9 +62,14 @@ DOCS=(
 	NOTICE.txt
 )
 
-S="${WORKDIR}/mattermost-desktop-${MY_PV}-linux-x64"
+S="${WORKDIR}"
 
 src_install() {
+	if use amd64; then
+		cd mattermost-desktop-${MY_PV}-linux-x64 || die
+	elif use arm64; then
+		cd mattermost-desktop-${MY_PV}-linux-arm64 || die
+	fi
 	newicon app_icon.png ${MY_PN}.png
 
 	insinto "/opt/${MY_PN}/locales"
