@@ -20,13 +20,15 @@ KEYWORDS="-* ~amd64"
 QA_PREBUILT="usr/bin/telegram-desktop"
 
 RDEPEND="
+	!net-im/telegram-desktop
+	!net-im/telegram-desktop-bin
 	sys-libs/glibc
 	dev-libs/glib:2
 	>=media-libs/fontconfig-2.13
 	media-libs/freetype:2
 	virtual/opengl
 	x11-libs/libX11
-	>=x11-libs/libxcb-1.10[xkb]
+	>=x11-libs/libxcb-1.10
 "
 
 RESTRICT="mirror"
@@ -46,7 +48,7 @@ src_install() {
 			telegram.png
 	done
 
-	domenu "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/telegramdesktop.desktop
+	domenu "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/org.telegram.desktop.desktop
 }
 
 pkg_postinst() {
