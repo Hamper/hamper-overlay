@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -34,6 +34,11 @@ RDEPEND="
 RESTRICT="mirror"
 
 S="${WORKDIR}/Telegram"
+
+src_prepare() {
+	default
+	sed -i -e 's/@CMAKE_INSTALL_FULL_BINDIR@\///g' "${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.desktop || die
+}
 
 src_install() {
 	newbin Telegram telegram-desktop
