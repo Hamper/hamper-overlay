@@ -37,7 +37,7 @@ S="${WORKDIR}/Telegram"
 
 src_prepare() {
 	default
-	sed -i -e 's/@CMAKE_INSTALL_FULL_BINDIR@\///g' "${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.desktop || die
+	sed -i -e 's/@CMAKE_INSTALL_FULL_BINDIR@\///g' "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/org.telegram.desktop.desktop || die
 }
 
 src_install() {
