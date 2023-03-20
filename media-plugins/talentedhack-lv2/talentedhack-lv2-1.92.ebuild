@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 inherit toolchain-funcs git-r3
 
 DESCRIPTION="LV2 port of Autotalent pitch correction plugin"
