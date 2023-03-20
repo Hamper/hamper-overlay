@@ -4,14 +4,14 @@
 EAPI=8
 MY_PN=${PN/-bin/}
 
-inherit desktop
+inherit desktop xdg
 
-DESCRIPTION="Supercharge your API workflow"
-HOMEPAGE="https://www.getpostman.com/"
+DESCRIPTION="API platform for building and using APIs"
+HOMEPAGE="https://www.postman.com/"
 SRC_URI="https://dl.pstmn.io/download/version/${PV}/linux64 -> ${P}.tar.gz"
 
 KEYWORDS="~amd64"
-LICENSE="MPL-2.0"
+LICENSE="postman"
 SLOT="0"
 IUSE=""
 
@@ -23,20 +23,20 @@ RESTRICT="strip mirror"
 S="${WORKDIR}/Postman/app"
 
 src_install() {
-  insinto /opt/${MY_PN}
-  doins -r *
+	insinto /opt/${MY_PN}
+	doins -r *
 
-  exeinto /opt/${MY_PN}
-  doexe Postman
-  doexe postman
+	exeinto /opt/${MY_PN}
+	doexe Postman
+	doexe postman
 
-  dosym /opt/${MY_PN}/Postman /usr/bin/${MY_PN}
+	dosym /opt/${MY_PN}/Postman /usr/bin/${MY_PN}
 
-  newicon -s 128 ${S}/resources/app/assets/icon.png postman.png
+	newicon resources/app/assets/icon.png postman.png
 
-  make_desktop_entry "postman" \
-      "Postman" \
-	  "/usr/share/icons/hicolor/128x128/apps/postman.png" \
-	  "Development" #\
-	  #"Comment=Postman API IDE"
+	make_desktop_entry "postman %U" \
+		"Postman" \
+		"postman" \
+		"Development;Utility;" \
+		"StartupWMClass=postman\nMimeType=x-scheme-handler/postman"
 }
