@@ -3,19 +3,19 @@
 
 EAPI=8
 
-#inherit cmake
-
 DESCRIPTION="Set P-State voltages and clock speeds on recent AMD CPUs on Linux."
 HOMEPAGE="https://github.com/kevinlekiller/amdctl"
-SRC_URI="https://github.com/kevinlekiller/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ "${PV}" == *9999* ]]; then
+		EGIT_REPO_URI="https://github.com/kevinlekiller/amdctl.git"
+		inherit git-r3
+else
+		SRC_URI="https://github.com/kevinlekiller/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+		KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-
-#DEPEND=""
-#RDEPEND="${DEPEND}"
-#BDEPEND=""
 
 RESTRICT="mirror"
 
