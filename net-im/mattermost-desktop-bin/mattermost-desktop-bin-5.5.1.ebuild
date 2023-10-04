@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 MY_PN="${PN%-*}"
-MY_PV="${PV/_rc/-rc}"
+MY_PV="${PV/_rc/-rc.}"
 
 inherit desktop xdg
 
@@ -15,11 +15,14 @@ SRC_URI="
 	amd64? ( https://releases.mattermost.com/desktop/${MY_PV}/mattermost-desktop-${MY_PV}-linux-x64.tar.gz )
 	arm64? ( https://releases.mattermost.com/desktop/${MY_PV}/mattermost-desktop-${MY_PV}-linux-arm64.tar.gz )
 "
+S="${WORKDIR}"
 
 LICENSE="Apache-2.0 GPL-2+ LGPL-2.1+ MIT"
 SLOT="0"
 # Starting with 5.2.0 upstream dropped x86 for their binary release #879519
-KEYWORDS="~amd64 ~arm64"
+if [[ ${PV} != *rc* ]]; then
+	KEYWORDS="~amd64 ~arm64"
+fi
 
 RDEPEND="
 	>=app-accessibility/at-spi2-core-2.46.0:2[X]
@@ -62,8 +65,6 @@ DOCS=(
 	NOTICE.txt
 )
 
-S="${WORKDIR}"
-
 src_install() {
 	if use amd64; then
 		cd mattermost-desktop-${MY_PV}-linux-x64 || die
@@ -85,7 +86,8 @@ src_install() {
 
 	dosym -r "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 
-	make_desktop_entry "${MY_PN}" Mattermost "${MY_PN}"
+	make_desktop_entry "${MY_PN} --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto" \
+		Mattermost "${MY_PN}"
 
 	einstalldocs
 }
