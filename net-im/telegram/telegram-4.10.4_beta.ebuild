@@ -35,6 +35,12 @@ RESTRICT="mirror"
 
 S="${WORKDIR}/Telegram"
 
+src_prepare() {
+	default
+
+	sed -i -e 's/^Exec=@CMAKE_INSTALL_FULL_BINDIR@\/telegram-desktop/Exec=\/usr\/bin\/telegram-desktop/' "${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.service || die
+}
+
 src_install() {
 	newbin Telegram telegram-desktop
 
@@ -49,6 +55,8 @@ src_install() {
 	done
 
 	domenu "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/org.telegram.desktop.desktop
+	insinto /usr/share/dbus-1/services
+	doins "${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.service
 }
 
 pkg_postinst() {
