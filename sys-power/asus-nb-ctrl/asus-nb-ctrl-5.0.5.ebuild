@@ -20,7 +20,7 @@ IUSE=""
 
 DEPEND="
 	dev-libs/libayatana-appindicator
-	dev-lang/rust
+	>=dev-lang/rust-1.72
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
