@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -42,7 +42,7 @@ src_prepare() {
 src_install() {
 	newbin Telegram telegram-desktop
 
-	insinto /etc/tdesktop
+	insinto /usr/share/TelegramDesktop/externalupdater.d/
 	newins - externalupdater <<<"${EPREFIX}/usr/bin/telegram-desktop"
 
 	local icon_size
