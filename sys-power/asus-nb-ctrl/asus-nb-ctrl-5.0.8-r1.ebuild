@@ -7,7 +7,6 @@ inherit git-r3
 
 DESCRIPTION="A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops"
 HOMEPAGE="https://gitlab.com/asus-linux/asusctl"
-SRC_URI="https://gitlab.com/asus-linux/asusctl"
 
 EGIT_REPO_URI="https://gitlab.com/asus-linux/asusctl.git"
 EGIT_COMMIT="${PV}"
