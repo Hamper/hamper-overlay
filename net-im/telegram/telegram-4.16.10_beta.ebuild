@@ -13,6 +13,8 @@ SRC_URI="
 	amd64? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${MY_PV}/tsetup.${MY_PV}.beta.tar.xz )
 "
 
+S="${WORKDIR}/Telegram"
+
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="-* ~amd64"
@@ -34,12 +36,12 @@ RDEPEND="
 
 RESTRICT="mirror"
 
-S="${WORKDIR}/Telegram"
-
 src_prepare() {
 	default
 
-	sed -i -e 's/^Exec=@CMAKE_INSTALL_FULL_BINDIR@\/telegram-desktop/Exec=\/usr\/bin\/telegram-desktop/' "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/org.telegram.desktop.service || die
+	sed -i -e \
+		's/^Exec=@CMAKE_INSTALL_FULL_BINDIR@\/telegram-desktop/Exec=\/usr\/bin\/telegram-desktop/' \
+		"${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/org.telegram.desktop.service || die
 }
 
 src_install() {

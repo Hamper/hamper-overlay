@@ -12,6 +12,8 @@ SRC_URI="
 	amd64? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/tsetup.${PV}.tar.xz )
 "
 
+S="${WORKDIR}/Telegram"
+
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="-* ~amd64"
@@ -30,8 +32,6 @@ RDEPEND="
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.10
 "
-
-S="${WORKDIR}/Telegram"
 
 src_prepare() {
 	default
