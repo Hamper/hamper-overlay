@@ -9,7 +9,8 @@ DESCRIPTION="Native API Testing Tool"
 HOMEPAGE="https://chapar.rest https://github.com/chapar-rest/chapar"
 SRC_URI="https://github.com/chapar-rest/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD-3"
+# SPDX:BSD-3-Clause is 'BSD' in Gentoo
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
