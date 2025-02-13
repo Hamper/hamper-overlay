@@ -7,13 +7,13 @@ MY_PN="Insomnia.Core"
 
 DESCRIPTION="REST API client, a postman alternative"
 HOMEPAGE="https://github.com/Kong/insomnia https://insomnia.rest/"
-SRC_URI="https://github.com/Kong/insomnia/releases/download/core%40${PV}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Kong/insomnia/releases/download/core%40${PV}/${MY_PN}-${PV}-x64.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64"
 
-S="${WORKDIR}/${MY_PN}-${PV}"
+S="${WORKDIR}/${MY_PN}-${PV}-x64"
 
 QA_PREBUILT="/opt/Insomnia.Core/insomnia /opt/Insomnia.Core/chrome-sandbox
 	/opt/Insomnia.Core/*.so"
