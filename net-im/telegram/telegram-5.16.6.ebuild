@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -37,8 +37,11 @@ src_prepare() {
 	default
 
 	sed -i -e \
-		's/^Exec=@CMAKE_INSTALL_FULL_BINDIR@\/telegram-desktop/Exec=\/usr\/bin\/telegram-desktop/' \
+		's/^Exec=@CMAKE_INSTALL_FULL_BINDIR@\/Telegram/Exec=\/usr\/bin\/telegram-desktop/' \
 		"${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.service || die
+	sed -i -e \
+		's/Exec=Telegram/Exec=\/usr\/bin\/telegram-desktop/' \
+		"${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.desktop || die
 }
 
 src_install() {
@@ -51,7 +54,7 @@ src_install() {
 	for icon_size in 16 32 48 64 128 256 512; do
 		newicon -s "${icon_size}" \
 			"${WORKDIR}/tdesktop-${PV}/Telegram/Resources/art/icon${icon_size}.png" \
-			telegram.png
+			org.telegram.desktop.png
 	done
 
 	domenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.desktop
