@@ -20,7 +20,7 @@ IUSE=""
 DEPEND="
 	dev-libs/libayatana-appindicator
 	sys-auth/seatd
-	>=dev-lang/rust-1.75
+	>=dev-lang/rust-1.90
 "
 RDEPEND="${DEPEND}"
 BDEPEND=""
