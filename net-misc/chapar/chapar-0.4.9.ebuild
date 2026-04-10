@@ -19,6 +19,7 @@ RDEPEND="${DEPEND}"
 BDEPEND="
 	>=dev-lang/go-1.22.2
 "
+RESTRICT="mirror"
 
 src_configure() {
 	export CGO_ENABLED=1
