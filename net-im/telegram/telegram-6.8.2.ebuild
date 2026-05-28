@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -55,6 +55,13 @@ src_install() {
 		newicon -s "${icon_size}" \
 			"${WORKDIR}/tdesktop-${PV}/Telegram/Resources/art/icon${icon_size}.png" \
 			org.telegram.desktop.png
+	done
+
+	local i
+	for i in "" "_attention" "_mute"; do
+		newicon -s symbolic \
+			"${WORKDIR}/tdesktop-${PV}/Telegram/Resources/icons/tray_monochrome${i}.svg" \
+			org.telegram.desktop${i/_/-}-symbolic.svg
 	done
 
 	domenu "${WORKDIR}/tdesktop-${PV}"/lib/xdg/org.telegram.desktop.desktop

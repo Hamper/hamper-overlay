@@ -60,6 +60,13 @@ src_install() {
 			org.telegram.desktop.png
 	done
 
+	local i
+	for i in "" "_attention" "_mute"; do
+		newicon -s symbolic \
+			"${WORKDIR}/tdesktop-${MY_PV}/Telegram/Resources/icons/tray_monochrome${i}.svg" \
+			org.telegram.desktop${i/_/-}-symbolic.svg
+	done
+
 	domenu "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/org.telegram.desktop.desktop
 	insinto /usr/share/dbus-1/services
 	doins "${WORKDIR}/tdesktop-${MY_PV}"/lib/xdg/org.telegram.desktop.service
