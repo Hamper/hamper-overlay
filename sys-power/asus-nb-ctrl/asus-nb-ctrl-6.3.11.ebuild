@@ -1,14 +1,14 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit git-r3
 
 DESCRIPTION="A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops"
-HOMEPAGE="https://gitlab.com/asus-linux/asusctl"
+HOMEPAGE="https://github.com/OpenGamingCollective/asusctl"
 
-EGIT_REPO_URI="https://gitlab.com/asus-linux/asusctl.git"
+EGIT_REPO_URI="https://github.com/OpenGamingCollective/asusctl.git"
 EGIT_COMMIT="${PV}"
 
 LICENSE="MPL-2.0"
