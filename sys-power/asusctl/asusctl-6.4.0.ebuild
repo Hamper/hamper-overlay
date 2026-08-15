@@ -5,10 +5,10 @@ EAPI=8
 
 inherit git-r3
 
-DESCRIPTION="A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops"
-HOMEPAGE="https://github.com/OpenGamingCollective/asusctl"
+DESCRIPTION="Daemon and tools to control your ASUS ROG laptop. Supersedes rog-core."
+HOMEPAGE="https://asus-linux.org/"
 
-EGIT_REPO_URI="https://github.com/OpenGamingCollective/asusctl.git"
+EGIT_REPO_URI="https://github.com/OpenGamingCollective/${PN}.git"
 EGIT_COMMIT="${PV}"
 
 LICENSE="MPL-2.0"
