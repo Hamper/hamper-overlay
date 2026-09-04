@@ -10,7 +10,7 @@ HOMEPAGE="https://desktop.telegram.org"
 MY_PV="${PV/_beta/}"
 SRC_URI="
 	https://github.com/telegramdesktop/tdesktop/archive/v${MY_PV}.tar.gz -> tdesktop-${MY_PV}.tar.gz
-	amd64? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${MY_PV}/tsetup.${MY_PV}.beta.tar.xz )
+	amd64? ( https://github.com/telegramdesktop/tdesktop/releases/download/v${MY_PV}/td-setup-linux-x64-${MY_PV}-beta.tar.xz )
 "
 
 S="${WORKDIR}/Telegram"
